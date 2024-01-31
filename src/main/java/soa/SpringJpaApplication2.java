@@ -49,10 +49,10 @@ public class SpringJpaApplication2 {
         }
 
         // Insérer un produit sans catégorie et sans stock
-        System.out.println("-1-Insérer un produit 'Ordinateur' sans catégorie et sans stock ----------");
+        /*System.out.println("-1-Insérer un produit 'Ordinateur' sans catégorie et sans stock ----------");
         Produit pOrdinateur =new Produit("ORD","Ordinateur", 2400, 1, date1 );
         produitMetier.ajouterProduit(pOrdinateur);
-        afficherTousLesProduits();
+        afficherTousLesProduits();*/
 
 
         // Insérer un produit avec catégorie et sans stock

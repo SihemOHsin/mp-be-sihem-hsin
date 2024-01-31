@@ -3,12 +3,13 @@ package soa.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import soa.entities.Produit;
 import soa.repository.ProduitRepository;
 
 @RestController // pour déclarer un service web de type REST
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RequestMapping("/produits")  //    http://localhost:8080/produits
 public class ProduitRESTController {
     @Autowired // pour l'injection de dépendances
@@ -84,6 +85,7 @@ public class ProduitRESTController {
         return produitRepos.save(p);
     }
 
+
     // Supprimer un produit  avec la méthode 'DELETE'
     //  http://localhost:8080/produits/   (DELETE)
     @DeleteMapping(
@@ -92,6 +94,16 @@ public class ProduitRESTController {
     public void deleteProduit(@RequestBody Produit p)
     {
         produitRepos.delete(p);
+    }
+
+
+    // filter PrixGreaterThan and OrderByPrixAsc
+    @GetMapping(
+            value = "/findByPrixGreaterThanOrderByPrixAsc",
+            produces = {MediaType.APPLICATION_JSON_VALUE}
+    )
+    public List<Produit> findByPrixGreaterThanOrderByPrixAsc(@RequestParam("prixMin") double prixMin) {
+        return produitRepos.findByPrixGreaterThanOrderByPrixAsc(prixMin);
     }
 
 }

@@ -35,4 +35,6 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
     List <Produit> findAllByDateAchatAfter(java.util.Date dateX);
 	//Retourner la liste des produits dont la date d’achat est inférieure à une date donnée
 	List <Produit> findAllByDateAchatBefore(java.util.Date dateX);
+	//List<Produit> findByCategoryId(Long categoryId);
+
 }
